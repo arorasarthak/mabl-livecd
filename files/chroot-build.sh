@@ -41,7 +41,7 @@ apt-get purge -y -qq \
 
 apt-get clean -y
 apt-get autoremove -y
-
+apt-get install git -y
 
 # Begin ROS Noetic Installation
 echo >&2 ">>>>>> Installing ROS Noetic "
@@ -51,8 +51,26 @@ apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BAD
 apt-get update -y
 apt-get install ros-noetic-desktop-full -y
 apt-get install python3-rosdep -y
-echo "source /opt/ros/noetic/setup.bash" >> /etc/skel/.bashrc
 
+# Baxter Stuff
+mkdir -p /home/catkin_ws && git clone https://github.com/arorasarthak/baxter_ws.git /home/catkin_ws/.
+rosdep init && rosdep update
+add-apt-repository ppa:rock-core/qt4 -y
+apt-get update -y
+apt-get install qt4-default -y
+cd /home/baxter_ws && rosdep install --from-paths src --ignore-src -r -y && cd -
+cd /home/baxter_ws && catkin_make && cd -
+echo "source /home/catkin_ws/devel/setup.bash" >> /etc/skel/.bashrc
+
+# Gazebo Stuff
+mkdir -p /home/gzweb
+git clone -b gzweb_1.4.0-gazebo11 https://github.com/arorasarthak/gzweb.git /home/gzweb/.
+apt-get install -y libjansson-dev nodejs npm nodejs libboost-dev imagemagick libtinyxml-dev mercurial cmake build-essential
+cd /home/gzweb && git checkout gzweb_1.4.0-gazebo11 && source /usr/share/gazebo/setup.sh
+npm run deploy --- -m local
+cp -av /home/catkin_ws/baxter_description /home/gzweb/http/client/assets/.
+cp -av /home/catkin_ws/rethink_ee_description /home/gzweb/http/client/assets/.
+cd -
 
 # V-REP Stuff goes here
 echo >&2 ">>>>>> Installing Coppelia Sim/V-REP "
