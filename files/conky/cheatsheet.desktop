@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=cheatsheet
+Comment=conky
+GenericName=cheatsheet
+Exec=conky
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=firefox
+Categories=cheatsheet;

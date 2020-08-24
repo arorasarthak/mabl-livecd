@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=VSCode
+Comment=VSCode
+GenericName=VSCode
+Exec=bash -c 'source /opt/ros/noetic/setup.bash && code'
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/usr/share/pixmaps/com.visualstudio.code.png
+Categories=Visual Studio Code;
+Path=
+StartupNotify=false
