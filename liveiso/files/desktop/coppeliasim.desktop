@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=CoppeliaSim (V-REP)
+Comment=Robotics Simulator
+GenericName=CoppeliaSim (V-REP)
+Exec=bash -c "/home/$USER/coppelia/coppeliaSim.sh"
+Terminal=true
+X-MultipleArgs=false
+Type=Application
+Icon=/usr/share/icons/coppelia.png
+Categories=Robotics;
