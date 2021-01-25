@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=GzWeb
+Comment=GzWeb
+GenericName=GzWeb
+Exec=bash -c 'source /opt/ros/noetic/setup.bash && cd /home/$USER/gzweb && npm start'
+Terminal=true
+X-MultipleArgs=false
+Type=Application
+Icon=/usr/share/icons/hicolor/scalable/apps/gazebo.svg
+Categories=Robotics;
+Path=
+StartupNotify=false
